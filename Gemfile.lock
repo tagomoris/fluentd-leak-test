@@ -1,0 +1,27 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    cool.io (1.1.0)
+      iobuffer (>= 1.0.0)
+    fluent-plugin-flowcounter (0.1.6)
+    fluentd (0.10.32)
+      cool.io (~> 1.1.0)
+      http_parser.rb (~> 0.5.1)
+      json (>= 1.4.3)
+      msgpack (~> 0.4.4)
+      yajl-ruby (~> 1.0)
+    http_parser.rb (0.5.3)
+    iobuffer (1.1.2)
+    jemalloc (0.1.9)
+    json (1.7.7)
+    msgpack (0.4.7)
+    yajl-ruby (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fluent-plugin-flowcounter
+  fluentd (= 0.10.32)
+  jemalloc (= 0.1.9)
+  msgpack (= 0.4.7)
