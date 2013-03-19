@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org"
 
 gem "fluentd", "= 0.10.32"
 gem "jemalloc", "= 0.1.9"

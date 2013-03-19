@@ -5,7 +5,7 @@ SECONDS = 1800
 
 TESTTAG = 'testdata.bench'
 
-LINES_PER_SEND = 10000 # 200,000 lines/1s
+LINES_PER_SEND = 5000 # 100,000 lines/1s
 SEND_PER_SECONDS = 20.0 # 0.05 sec interval
 
 TARGET_HOST = 'localhost'
