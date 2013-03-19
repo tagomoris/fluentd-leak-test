@@ -3,7 +3,10 @@ require 'socket'
 
 SECONDS = 1800
 
-LINES_PER_SEND = 5000 # 50,000 lines/1s
+TESTTAG = 'testdata.bench'
+
+LINES_PER_SEND = 10000 # 200,000 lines/1s
+SEND_PER_SECONDS = 20.0 # 0.05 sec interval
 
 TARGET_HOST = 'localhost'
 TARGET_PORT = 24224
@@ -16,8 +19,6 @@ LOGS = <<EOL
 203.0.113.1 - - [14/Mar/2013:07:51:30 +0900] "GET /x/resize/240x99/http://livedoor.example.jp/thisismyblog/imgs/x/x/x.jpg HTTP/1.1" 200 15773 "-" "-" "-" resize.example.jp 0.003
 EOL
 LOGLINES = LOGS.split(/\n/).map(&:chomp)
-
-TESTTAG = 'test.bench'
 
 $message = nil
 def msg(tag, time, num, logs)
@@ -34,11 +35,12 @@ end
 def main
   starts = Time.now.to_i
   ends = starts + SECONDS
+  interval = 1.0 / SEND_PER_SECONDS
 
   sock = TCPSocket.open(TARGET_HOST, TARGET_PORT)
   while Time.now.to_i < ends
     sock.write(msg(TESTTAG, starts, LINES_PER_SEND, LOGLINES))
-    sleep 0.1
+    sleep interval
   end
 end
 
